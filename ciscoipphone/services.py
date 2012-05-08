@@ -1,75 +1,47 @@
-from xml.etree.ElementTree import Element, SubElement, tostring
+from ciscoipphone.utils import dict2xml
+from types import NoneType
 
-class CiscoIPPhone(object):   
-    def __init__(self, title=None, prompt=None):
-        self.softkeys = []
-        self.title = title
-        self.prompt = prompt
-
-    def add_softkey(self, name, url, position):
-        self.softkeys.append({'Name':name, 'URL': url, 'Position:': position})
-
-    def to_xml(self):
-        root = Element(self.name)
-        title = SubElement(root, 'Title')
-        title.text = self.title
-        prompt = SubElement(root, 'Prompt')
-        prompt.text = self.prompt
-        if self.softkeys:
-            for softkey in self.softkeys:
-                softkey = SubElement(root, 'SoftKeyItem')
-                for key, value in softkey.items():
-                    item = SubElement(softkey, key)
-                    item.text = value
-        return root
-
-class Menu(CiscoIPPhone):
-    name = 'CiscoIPPhoneMenu'
-    
+class Serializable(object):
     def __init__(self, *args, **kwargs):
-        super(Menu, self).__init__(*args, **kwargs)
-        self.items = []
+        self.data = dict()
+
+    @property
+    def name(self):
+        return self.__class__.__name__
+
+    def to_dict(self):
+        return self.__dict__
+
+class MenuItem(Serializable):
+    def __init__(self, name, url):
+        setattr(self, 'Name', name)
+        setattr(self, 'URL', url)
+
+class CiscoIPPhoneObject(Serializable):
+    def __init__(self, title=None, prompt=None):
+        self.items = list()
+        setattr(self, 'Title', title)
+        setattr(self, 'Prompt', prompt)
+
+    def to_dict(self):
+        dct = dict()
+        for key, val in self.__dict__.items():
+            if isinstance(val, list) and len(val):
+                for i in val:
+                    lst = dct.get(i.name, list())
+                    if isinstance(i, MenuItem):
+                        lst.append(i.to_dict())
+                    dct[i.name] = lst
+            if isinstance(val, str):
+                dct[key] = val
+        return {self.name: dct}
+
+class CiscoIPPhoneMenu(CiscoIPPhoneObject):
+    def __init__(self, *args, **kwargs):
+        super(CiscoIPPhoneMenu, self).__init__(*args, **kwargs)
 
     def add_menu(self, name, url):
-        self.items.append({'Name':name, 'URL': url})
+        self.items.append(MenuItem(name, url))
 
-    def to_xml(self):
-        xml = super(Menu, self).to_xml()
-        for i in self.items:
-            i = SubElement(xml, 'MenuItem')
-            for key, value in i.items():
-                item = SubElement(i, key)
-                item.text = value
-        return tostring(xml)        
-
-class Directory(CiscoIPPhone):
-    name = 'CiscoIPPhoneDirectory'
-    
-    def __init__(self, *args, **kwargs):
-        super(Directory, self).__init__(*args, **kwargs)
-        self.items = []
-
-    def add_entry(self, name, phone_number):
-        self.items.append({'Name':name, 'Telephone': phone_number})
-
-class Text(CiscoIPPhone):
-    name = 'CiscoIPPhoneText'
-
-
-class Input(CiscoIPPhone):
-    name = 'CiscoIPPhoneInput'
-
-
-class Image(CiscoIPPhone):
-    name = 'CiscoIPPhoneImage'
-
-
-class GraphicMenu(CiscoIPPhone):
-    name = 'CiscoIPPhoneGraphicMenu'
-
-
-class IconMenu(CiscoIPPhone):
-    name = 'CiscoIPPhoneIconMenu'
-
-
-
+    def to_dict(self):
+        return super(CiscoIPPhoneMenu, self).to_dict()

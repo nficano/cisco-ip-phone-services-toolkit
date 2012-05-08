@@ -3,15 +3,16 @@ import copy
 
 example = {
     'CiscoIPPhoneMenu': {
-        'Prompt': 'Select a Directory',
+        'Title': 'Title text goes here',
+        'Prompt': 'The prompt text goes here',
         'MenuItem': [
             {
-                'Name':'Gmail Contacts',
-                'URL':'http://192.168.1.142:5000/gmail.xml'
+                'Name':'Foo Menu',
+                'URL':'http://path-to-foo-menu'
             },
             {
-                'Name':'Professional',
-                'URL':'http://192.168.1.142:5000/gmail.xml'
+                'Name':'Bar Menu',
+                'URL':'http://path-to-bar-menu'
             },
         ]
     }
