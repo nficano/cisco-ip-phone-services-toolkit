@@ -2,10 +2,37 @@ cisco-ip-phone-services
 =========================
 Python wrapper for developing Cisco IP Phone XML Services. 
 
-I hacked this up in one night, so its extremely crude, BUT I plan on
-working on this a lot over the coming days :)
+Highly work-in-progress!! I hacked this up literally in a single night. It has
+a far ways to go before it could be considered usable. 
 
-Usage example
+I really hope to work on this a lot over the coming days/weeks.
+
+USAGE EXAMPLES
+-------------
+The following are a few usage examples..
+
+CiscoIPPhoneMenu
+-------------
+::
+
+    >>> from ciscoipphone.services import Menu
+    >>> menu = Menu(prompt="Select a directory")
+    >>> menu.add_item("My Contacts", "http://server/directory/contacts")
+    >>> menu.add_item("Businesses", "http://server/directory/businesses")
+    >>> menu.prettify()
+    <CiscoIPPhoneMenu>
+      <MenuItem>
+        <URL>http://server/directory/contacts</URL>
+        <Name>My Contacts</Name>
+      </MenuItem>
+      <MenuItem>
+        <URL>http://server/directory/businesses</URL>
+        <Name>Businesses</Name>
+      </MenuItem>
+      <Prompt>Select a directory</Prompt>
+    </CiscoIPPhoneMenu>
+
+CiscoIPPhoneDirectory
 -------------
 ::
 
