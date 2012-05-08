@@ -1,47 +1,119 @@
-from ciscoipphone.utils import dict2xml
-from types import NoneType
+from ciscoipphone.base import CiscoService
 
-class Serializable(object):
-    def __init__(self, *args, **kwargs):
-        self.data = dict()
+class MenuItem(CiscoService):
+    class Meta:
+        service_name = 'MenuItem'
+        fields = ['Name', 'URL']
 
-    @property
-    def name(self):
-        return self.__class__.__name__
+class SoftKeyItem(CiscoService):
+    class Meta:
+        service_name = 'SoftKeyItem'
+        fields = ['Name', 'URL', 'Position']
 
-    def to_dict(self):
-        return self.__dict__
+class ExecuteItem(CiscoService):
+    class Meta:
+        service_name = 'ExecuteItem'
+        fields = ['URL']
 
-class MenuItem(Serializable):
-    def __init__(self, name, url):
-        setattr(self, 'Name', name)
-        setattr(self, 'URL', url)
+class InputItem(CiscoService):
+    class Meta:
+        service_name = 'InputItem'
+        fields = ['DisplayName','QueryStringParam','DefaultValue','InputFlags']
 
-class CiscoIPPhoneObject(Serializable):
-    def __init__(self, title=None, prompt=None):
-        self.items = list()
-        setattr(self, 'Title', title)
-        setattr(self, 'Prompt', prompt)
+class IconItem(CiscoService):
+    class Meta:
+        service_name = 'IconItem'
+        fields = ['Index', 'Width', 'Height', 'Depth', 'Data']
 
-    def to_dict(self):
-        dct = dict()
-        for key, val in self.__dict__.items():
-            if isinstance(val, list) and len(val):
-                for i in val:
-                    lst = dct.get(i.name, list())
-                    if isinstance(i, MenuItem):
-                        lst.append(i.to_dict())
-                    dct[i.name] = lst
-            if isinstance(val, str):
-                dct[key] = val
-        return {self.name: dct}
+class DirectoryEntry(CiscoService):
+    class Meta:
+        service_name = 'DirectoryEntry'
+        fields = ['Name', 'Telephone']
 
-class CiscoIPPhoneMenu(CiscoIPPhoneObject):
-    def __init__(self, *args, **kwargs):
-        super(CiscoIPPhoneMenu, self).__init__(*args, **kwargs)
+class Menu(CiscoService):
+    class Meta:
+        service_name = 'CiscoIPPhoneMenu'
+        fields = ['Prompt', 'Title', 'MenuItem']
 
-    def add_menu(self, name, url):
-        self.items.append(MenuItem(name, url))
+    def add(self, name, url):
+        self.items.append(MenuItem(name=name, url=url))
 
-    def to_dict(self):
-        return super(CiscoIPPhoneMenu, self).to_dict()
+class Directory(CiscoService):
+    class Meta:
+        service_name = 'CiscoIPPhoneDirectory'
+        fields = ['Prompt', 'Title', 'DirectoryEntry', 'SoftKeyItem']
+
+    def add_entry(self, name, telephone):
+        self.items.append(DirectoryEntry(name=name, telephone=telephone))
+
+    def add_softkey(self, name, url, position):
+        self.items.append(SoftKeyItem(name=name, url=url, position=position))
+
+class Text(CiscoService):
+    class Meta:
+        service_name = 'CiscoIPPhoneText'
+        fields = ['Prompt', 'Title', 'Text', 'SoftKeyItem']
+
+    def add_softkey(self, name, url, position):
+        self.items.append(SoftKeyItem(name=name, url=url, position=position))
+
+class Input(CiscoService):
+    class Meta:
+        service_name = 'CiscoIPPhoneInput'
+        fields = ['Prompt', 'Title', 'URL', 'InputItem', 'SoftKeyItem']
+
+    def add_softkey(self, name, url, position):
+        self.items.append(SoftKeyItem(name=name, url=url, position=position))
+
+    def add_input(self, display_name, query_string_param, default_value,
+        input_flags):
+
+        input_item = InputItem(display_name = display_name,
+            query_string_param = query_string_param,
+            default_value = default_value, input_flags = input_flags)
+
+        self.items.append(input_item)
+
+class Image(CiscoService):
+    class Meta:
+        service_name = 'CiscoIPPhoneImage'
+        fields = ['Prompt', 'Title', 'LocationX', 'LocationY', 'Width',
+            'Height', 'Depth', 'Data', 'SoftKeyItem']
+
+    def add_softkey(self, name, url, position):
+        self.items.append(SoftKeyItem(name=name, url=url, position=position))
+
+class GraphicMenu(CiscoService):
+    class Meta:
+        service_name = 'CiscoIPPhoneGraphicMenu'
+        fields = ['Prompt', 'Title', 'LocationX', 'LocationY', 'Width',
+            'Height', 'Depth', 'Data', 'SoftKeyItem', 'MenuItem']
+
+    def add_softkey(self, name, url, position):
+        self.items.append(SoftKeyItem(name=name, url=url, position=position))
+
+    def add_item(self, name, url):
+        self.items.append(MenuItem(name=name, url=url))
+
+class IconMenu(CiscoService):
+    class Meta:
+        service_name = 'CiscoIPPhoneIconMenu'
+        fields = ['Prompt', 'Title', 'SoftKeyItem', 'MenuItem', 'IconItem']
+
+    def add_softkey(self, name, url, position):
+        self.items.append(SoftKeyItem(name=name, url=url, position=position))
+
+    def add_item(self, name, url):
+        self.items.append(MenuItem(name=name, url=url))
+
+    def add_icon_item(index, width, height, depth, data):
+        self.items.append(IconItem(index=index, width=width, height=height,
+                depth=depth, data=data))
+
+class Execute(CiscoService):
+    class Meta:
+        service_name = 'CiscoIPPhoneExecute'
+        fields = ['ExecuteItem']
+
+    def add_item(self, url):
+        self.items.append(ExecuteItem(url=url))

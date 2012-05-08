@@ -1,27 +1,10 @@
 from xml.dom.minidom import Document
+import re
 import copy
 
-example = {
-    'CiscoIPPhoneMenu': {
-        'Title': 'Title text goes here',
-        'Prompt': 'The prompt text goes here',
-        'MenuItem': [
-            {
-                'Name':'Foo Menu',
-                'URL':'http://path-to-foo-menu'
-            },
-            {
-                'Name':'Bar Menu',
-                'URL':'http://path-to-bar-menu'
-            },
-        ]
-    }
-}
-
 class dict2xml(object):
-    doc = Document()
-
     def __init__(self, structure):
+        self.doc = Document()
         if len(structure) == 1:
             rootName = str(structure.keys()[0])
             self.root = self.doc.createElement(rootName)
@@ -51,3 +34,10 @@ class dict2xml(object):
     
     def to_string(self):
         return self.doc.toxml()
+
+    def prettify(self):
+        xml = self.doc.toprettyxml(indent='  ')
+        regexp = re.compile('>\n\s+([^<>\s].*?)\n\s+</', re.DOTALL)
+        return regexp.sub('>\g<1></', xml)
+        
+        
