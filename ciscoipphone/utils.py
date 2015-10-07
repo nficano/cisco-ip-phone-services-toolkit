@@ -1,12 +1,14 @@
+#!/usr/bin/env/python
+# -*- coding: utf-8 -*-
 from xml.dom.minidom import Document
 import re
-import copy
 
-class dict2xml(object):
+
+class DictToXML(object):
     def __init__(self, structure):
         self.doc = Document()
         if len(structure) == 1:
-            rootName = str(structure.keys()[0])
+            rootName = str(list(structure.keys())[0])
             self.root = self.doc.createElement(rootName)
 
             self.doc.appendChild(self.root)
@@ -18,7 +20,6 @@ class dict2xml(object):
                 tag = self.doc.createElement(k)
                 father.appendChild(tag)
                 self.build(tag, structure[k])
-        
         elif type(structure) == list:
             grandFather = father.parentNode
             tagName = father.tagName
@@ -31,7 +32,7 @@ class dict2xml(object):
             data = str(structure)
             tag = self.doc.createTextNode(data)
             father.appendChild(tag)
-    
+
     def to_string(self):
         return self.doc.toxml()
 
@@ -39,5 +40,3 @@ class dict2xml(object):
         xml = self.doc.toprettyxml(indent='  ')
         regexp = re.compile('>\n\s+([^<>\s].*?)\n\s+</', re.DOTALL)
         return regexp.sub('>\g<1></', xml)
-        
-        
