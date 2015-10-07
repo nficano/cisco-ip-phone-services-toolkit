@@ -36,18 +36,14 @@ class CiscoService(object):
                 setattr(self, key, value)
 
     def set_field(self, name, value):
-        for index, key in enumerate(self._meta.fields):
-            if key.lower() == name.lower().replace('_', ''):
+        for f in self._meta.fields:
+            if f.lower() == name.lower().replace('_', ''):
                 if isinstance(value, dict):
-                    lst = self.data.get(key, list())
+                    lst = self.data.get(f, list())
                     lst.append(value)
-                    self.data[key] = lst
+                    self.data[f] = lst
                 else:
-                    self.data[key] = value
-
-    def __setattr__(self, name, value):
-        self.set_field(name, value)
-        self.__dict__[name] = value
+                    self.data[f] = value
 
     def to_dict(self):
         if self.items:
@@ -61,3 +57,7 @@ class CiscoService(object):
 
     def prettify(self):
         print(DictToXML({self._meta.service_name: self.to_dict()}).prettify())
+
+    def __setattr__(self, name, value):
+        self.set_field(name, value)
+        self.__dict__[name] = value
