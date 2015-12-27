@@ -1,10 +1,10 @@
 Cisco IP Phone Services
 =======================
 
-Python wrapper for developing Cisco IP Phone XML Services.
+A Python wrapper for streamlined development of Cisco IP Phone XML Services.
 
-CiscoIPPhoneMenu
-----------------
+Generating ``CiscoIPPhoneMenu``
+-------------------------------
 
 .. code:: python
 
@@ -14,7 +14,7 @@ CiscoIPPhoneMenu
     menu.add_item("Businesses", "http://server/directory/businesses")
     menu.prettify()
 
-Expected output
+Will render:
 
 .. code:: xml
 
@@ -30,8 +30,8 @@ Expected output
       <Prompt>Select a directory</Prompt>
     </CiscoIPPhoneMenu>
 
-CiscoIPPhoneDirectory
----------------------
+Generating ``CiscoIPPhoneDirectory``
+------------------------------------
 
 .. code:: python
 
@@ -42,7 +42,7 @@ CiscoIPPhoneDirectory
     directory.add_softkey('Dial', 'SoftKey:Dial', 1)
     directory.prettify()
 
-Expexted output:
+Will render:
 
 .. code:: xml
 
