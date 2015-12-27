@@ -1,37 +1,38 @@
+#!/usr/bin/env/python
+# -*- coding: utf-8 -*-
 from xml.dom.minidom import Document
 import re
-import copy
 
-class dict2xml(object):
+
+class DictToXML(object):
     def __init__(self, structure):
         self.doc = Document()
         if len(structure) == 1:
-            rootName = str(structure.keys()[0])
-            self.root = self.doc.createElement(rootName)
+            root_name = str(list(structure.keys())[0])
+            self.root = self.doc.createElement(root_name)
 
             self.doc.appendChild(self.root)
-            self.build(self.root, structure[rootName])
+            self.build(self.root, structure[root_name])
 
-    def build(self, father, structure):
-        if type(structure) == dict:
+    def build(self, parent, structure):
+        if isinstance(structure, dict):
             for k in structure:
                 tag = self.doc.createElement(k)
-                father.appendChild(tag)
+                parent.appendChild(tag)
                 self.build(tag, structure[k])
-        
-        elif type(structure) == list:
-            grandFather = father.parentNode
-            tagName = father.tagName
-            grandFather.removeChild(father)
-            for l in structure:
-                tag = self.doc.createElement(tagName)
-                self.build(tag, l)
-                grandFather.appendChild(tag)
+        elif isinstance(structure, list):
+            grand_parent = parent.parentNode
+            tag_name = parent.tagName
+            grand_parent.removeChild(parent)
+            for s in structure:
+                tag = self.doc.createElement(tag_name)
+                self.build(tag, s)
+                grand_parent.appendChild(tag)
         else:
             data = str(structure)
             tag = self.doc.createTextNode(data)
-            father.appendChild(tag)
-    
+            parent.appendChild(tag)
+
     def to_string(self):
         return self.doc.toxml()
 
@@ -39,5 +40,3 @@ class dict2xml(object):
         xml = self.doc.toprettyxml(indent='  ')
         regexp = re.compile('>\n\s+([^<>\s].*?)\n\s+</', re.DOTALL)
         return regexp.sub('>\g<1></', xml)
-        
-        

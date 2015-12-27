@@ -1,4 +1,7 @@
-from ciscoipphone.utils import dict2xml
+#!/usr/bin/env/python
+# -*- coding: utf-8 -*-
+from ciscoipphone.utils import DictToXML
+
 
 class CiscoServiceOptions(object):
     service_name = None
@@ -12,13 +15,15 @@ class CiscoServiceOptions(object):
                 overrides[override_name] = getattr(meta, override_name)
         return object.__new__(type('CiscoServiceOptions', (cls,), overrides))
 
+
 class DeclarativeMetaclass(type):
     def __new__(cls, name, bases, attrs):
-        new_class = super(DeclarativeMetaclass, cls).__new__(cls, name,
-            bases, attrs)
+        new_class = super(DeclarativeMetaclass, cls).__new__(
+            cls, name, bases, attrs)
         opts = getattr(new_class, 'Meta', None)
         new_class._meta = CiscoServiceOptions(opts)
         return new_class
+
 
 class CiscoService(object):
     __metaclass__ = DeclarativeMetaclass
@@ -26,23 +31,19 @@ class CiscoService(object):
     def __init__(self, **kwargs):
         self.data = {}
         self.items = []
-        for key, value in kwargs.items():
+        for key, value in list(kwargs.items()):
             if value:
                 setattr(self, key, value)
 
     def set_field(self, name, value):
-        for index, key in enumerate(self._meta.fields):
-            if key.lower() == name.lower().replace('_',''):
+        for f in self._meta.fields:
+            if f.lower() == name.lower().replace('_', ''):
                 if isinstance(value, dict):
-                    lst = self.data.get(key, list())
+                    lst = self.data.get(f, list())
                     lst.append(value)
-                    self.data[key] = lst
+                    self.data[f] = lst
                 else:
-                    self.data[key] = value
-
-    def __setattr__(self, name, value):
-        self.set_field(name, value)
-        self.__dict__[name] = value
+                    self.data[f] = value
 
     def to_dict(self):
         if self.items:
@@ -52,7 +53,11 @@ class CiscoService(object):
         return self.data
 
     def serialize(self):
-        return dict2xml({self._meta.service_name: self.to_dict()}).to_string()
+        return DictToXML({self._meta.service_name: self.to_dict()}).to_string()
 
     def prettify(self):
-        print dict2xml({self._meta.service_name: self.to_dict()}).prettify()
+        print(DictToXML({self._meta.service_name: self.to_dict()}).prettify())
+
+    def __setattr__(self, name, value):
+        self.set_field(name, value)
+        self.__dict__[name] = value
