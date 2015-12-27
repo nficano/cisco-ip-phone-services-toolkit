@@ -1,8 +1,40 @@
+=======================
 Cisco IP Phone Services
 =======================
 
+.. image:: https://img.shields.io/pypi/v/ciscoipphone.svg
+  :alt: Pypi
+  :target: https://pypi.python.org/pypi/ciscoipphone/
+
+.. image:: https://img.shields.io/pypi/pyversions/ciscoipphone.svg
+  :alt: Python Versions
+  :target: https://pypi.python.org/pypi/ciscoipphone/
+
+Description
+===========
+
 A collection of tools and constructors for quickly generating and deploying
 Cisco IP phone directory services.
+
+
+Installation
+============
+
+1. In a new project folder for your phone services:
+
+.. code:: bash
+
+   $ mkdir myphoneservices
+   $ cd myphoneservices
+
+2. Install ``ciscoipphone`` from *pypi*.
+
+.. code:: bash
+
+    $ pip install ciscoipphone
+
+Basic Usage
+===========
 
 Generating ``CiscoIPPhoneMenu``
 -------------------------------
