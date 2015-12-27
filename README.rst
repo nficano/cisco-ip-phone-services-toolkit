@@ -1,7 +1,8 @@
 Cisco IP Phone Services
 =======================
 
-A Python wrapper for streamlined development of Cisco IP Phone XML Services.
+A collection of tools and constructors for quickly generating and deploying
+Cisco IP phone directory services.
 
 Generating ``CiscoIPPhoneMenu``
 -------------------------------
