@@ -10,6 +10,9 @@ Cisco IP Phone Services
   :alt: Python Versions
   :target: https://pypi.python.org/pypi/ciscoipphone/
 
+.. image:: http://www.allaccess.com/assets/img/editorial/raw/da/daviddinkins.jpg
+  :alt: Mayor Dinkins
+
 Description
 ===========
 
