@@ -2,6 +2,9 @@
 Cisco IP Phone Services
 =======================
 
+.. image:: http://www.allaccess.com/assets/img/editorial/raw/da/daviddinkins.jpg
+  :alt: Mayor Dinkins
+
 .. image:: https://img.shields.io/pypi/v/ciscoipphone.svg
   :alt: Pypi
   :target: https://pypi.python.org/pypi/ciscoipphone/
@@ -9,9 +12,6 @@ Cisco IP Phone Services
 .. image:: https://img.shields.io/pypi/pyversions/ciscoipphone.svg
   :alt: Python Versions
   :target: https://pypi.python.org/pypi/ciscoipphone/
-
-.. image:: http://www.allaccess.com/assets/img/editorial/raw/da/daviddinkins.jpg
-  :alt: Mayor Dinkins
 
 Description
 ===========
