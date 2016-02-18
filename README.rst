@@ -2,6 +2,12 @@
 Cisco IP Phone Services
 =======================
 
+.. image:: http://www.allaccess.com/assets/img/editorial/raw/da/daviddinkins.jpg
+  :alt: Mayor Dinkins
+
+Description
+===========
+
 .. image:: https://img.shields.io/pypi/v/ciscoipphone.svg
   :alt: Pypi
   :target: https://pypi.python.org/pypi/ciscoipphone/
@@ -10,11 +16,7 @@ Cisco IP Phone Services
   :alt: Python Versions
   :target: https://pypi.python.org/pypi/ciscoipphone/
 
-Description
-===========
 
-.. image:: http://www.allaccess.com/assets/img/editorial/raw/da/daviddinkins.jpg
-  :alt: Mayor Dinkins
 
 A collection of tools and constructors for quickly generating and deploying
 Cisco IP phone directory services.
