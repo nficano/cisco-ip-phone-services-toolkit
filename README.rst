@@ -19,7 +19,7 @@ Description
 
 
 A collection of tools and constructors for quickly generating and deploying
-Cisco IP phone directory services.
+Cisco IP phone directory services, like Mayor Dinkins would do. #dinks
 
 
 Installation
