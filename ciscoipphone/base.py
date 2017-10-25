@@ -1,6 +1,7 @@
 #!/usr/bin/env/python
 # -*- coding: utf-8 -*-
 from ciscoipphone.utils import DictToXML
+from six import add_metaclass
 
 
 class CiscoServiceOptions(object):
@@ -24,9 +25,8 @@ class DeclarativeMetaclass(type):
         new_class._meta = CiscoServiceOptions(opts)
         return new_class
 
-
+@add_metaclass(DeclarativeMetaclass)
 class CiscoService(object):
-    __metaclass__ = DeclarativeMetaclass
 
     def __init__(self, **kwargs):
         self.data = {}

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<CiscoIPPhoneDirectory>
+  <DirectoryEntry>
+    <Telephone>18442391546</Telephone>
+    <Name>Avon Barksdale</Name>
+  </DirectoryEntry>
+  <DirectoryEntry>
+    <Telephone>18993712775</Telephone>
+    <Name>Stringer Bell</Name>
+  </DirectoryEntry>
+  <SoftKeyItem>
+    <URL>SoftKey:Dial</URL>
+    <Position>1</Position>
+    <Name>Dial</Name>
+  </SoftKeyItem>
+  <Prompt>Select a contact</Prompt>
+  <Title>My Contacts</Title>
+</CiscoIPPhoneDirectory>
+
