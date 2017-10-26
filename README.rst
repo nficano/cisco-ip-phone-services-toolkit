@@ -53,6 +53,8 @@ Will render:
 
 .. code:: xml
 
+    <?xml version="1.0" ?>
+
     <CiscoIPPhoneMenu>
       <MenuItem>
         <URL>http://server/directory/contacts</URL>
@@ -64,6 +66,8 @@ Will render:
       </MenuItem>
       <Prompt>Select a directory</Prompt>
     </CiscoIPPhoneMenu>
+
+
 
 Generating ``CiscoIPPhoneDirectory``
 ------------------------------------
@@ -82,6 +86,7 @@ Will render:
 .. code:: xml
 
     <?xml version="1.0" ?>
+
     <CiscoIPPhoneDirectory>
       <DirectoryEntry>
         <Telephone>18442391546</Telephone>
@@ -99,3 +104,4 @@ Will render:
       <Prompt>Select a contact</Prompt>
       <Title>My Contacts</Title>
     </CiscoIPPhoneDirectory>
+

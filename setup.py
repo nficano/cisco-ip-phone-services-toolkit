@@ -2,24 +2,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 from setuptools import setup, find_packages
-from itertools import ifilter
 from os import path
 from ast import parse
-import pip
-requirements = pip.req.parse_requirements("requirements.txt",
-                                          session=pip.download.PipSession())
 
-pip_requirements = [str(r.req) for r in requirements]
+try:
+    # Python2
+    from future_builtins import filter
+except ImportError:
+    # Python3
+    pass
 
-with open('README.rst') as readme_file:
-    readme = readme_file.read()
+with open('README.rst') as file:
+    readme = file.read()
 
-with open('LICENSE.txt') as readme_file:
-    license = readme_file.read()
+with open('LICENSE.txt') as file:
+    license = file.read()
 
-with open(path.join('ciscoipphone', '__init__.py')) as f:
-    __version__ = parse(next(ifilter(
-        lambda line: line.startswith('__version__'), f))).body[0].value.s
+with open(path.join('ciscoipphone', '__init__.py')) as file:
+    __version__ = parse(next(filter(
+        lambda line: line.startswith('__version__'), file))).body[0].value.s
 
 setup(
     name='ciscoipphone',
@@ -32,8 +33,8 @@ setup(
                  "generating and deploying Cisco IP phone directory "
                  "services."),
     zip_safe=False,
-    install_requires=pip_requirements,
     long_description=readme,
+    install_requires=['six'],
     license=license,
     classifiers=[
         "Programming Language :: Python :: 2.7",

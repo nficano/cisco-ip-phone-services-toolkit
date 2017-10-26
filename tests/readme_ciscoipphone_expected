@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<CiscoIPPhoneMenu>
+  <MenuItem>
+    <URL>http://server/directory/contacts</URL>
+    <Name>My Contacts</Name>
+  </MenuItem>
+  <MenuItem>
+    <URL>http://server/directory/businesses</URL>
+    <Name>Businesses</Name>
+  </MenuItem>
+  <Prompt>Select a directory</Prompt>
+</CiscoIPPhoneMenu>
+

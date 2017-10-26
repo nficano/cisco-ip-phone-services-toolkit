@@ -45,7 +45,7 @@ class Menu(CiscoService):
         service_name = 'CiscoIPPhoneMenu'
         fields = ['Prompt', 'Title', 'MenuItem']
 
-    def add(self, name, url):
+    def add_item(self, name, url):
         self.items.append(MenuItem(name=name, url=url))
 
 

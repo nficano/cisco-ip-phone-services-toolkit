@@ -2,3 +2,5 @@
 *.pyo
 *.swp
 .DS_Store
+.idea/
+.cache/
