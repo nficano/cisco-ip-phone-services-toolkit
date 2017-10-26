@@ -12,15 +12,15 @@ except ImportError:
     # Python3
     pass
 
-with open('README.rst') as license_file:
-    readme = license_file.read()
+with open('README.rst') as file:
+    readme = file.read()
 
-with open('LICENSE.txt') as license_file:
-    license = license_file.read()
+with open('LICENSE.txt') as file:
+    license = file.read()
 
-with open(path.join('ciscoipphone', '__init__.py')) as f:
+with open(path.join('ciscoipphone', '__init__.py')) as file:
     __version__ = parse(next(filter(
-        lambda line: line.startswith('__version__'), f))).body[0].value.s
+        lambda line: line.startswith('__version__'), file))).body[0].value.s
 
 setup(
     name='ciscoipphone',
