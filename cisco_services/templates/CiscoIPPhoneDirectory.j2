@@ -1,0 +1,10 @@
+<CiscoIPPhoneDirectory>
+   <Title>{{ title }}</Title>
+   <Prompt>{{ prompt }}</Prompt>
+   {% for directory_entry in directory_entries %}
+     <DirectoryEntry>
+       <Name>{{ directory_entry.name }}</Name>
+       <Telephone>{{ directory_entry.telephone }}</Telephone>
+     </DirectoryEntry>
+   {% endfor %}
+ </CiscoIPPhoneDirectory>

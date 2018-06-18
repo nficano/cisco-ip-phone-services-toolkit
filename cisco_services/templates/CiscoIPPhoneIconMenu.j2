@@ -1,0 +1,30 @@
+<CiscoIPPhoneIconMenu>
+  <Title>{{ title }}</Title>
+  <Prompt>{{ prompt }}</Prompt>
+  {% for menu_item in menu_items %}
+    <MenuItem>
+      <IconIndex>{{ menu_item.icon_index }}</IconIndex>
+      <Name>{{ menu_item.name }}</Name>
+      <URL>{{ menu_item.url }}</URL>
+    </MenuItem>
+  {% endfor %}
+  {% for soft_key_item in soft_key_items %}
+    <SoftKeyItem>
+      <Name>{{ soft_key_item.name }}</Name>
+      <URL>{{ soft_key_item.url }}</URL>
+      <Position>{{ soft_key_item.position }}</Position>
+      {%- if soft_key_item.get('url_down') -%}
+      <URLDown>{{ url_down }}</URLDown>
+      {%- endif -%}
+    </SoftKeyItem>
+  {% endfor %}
+  {% for icon_item in icon_items %}
+    <IconItem>
+      <Index>{{ icon_item.index }}</Index>
+      <Height>{{ icon_item.height }}</Height>
+      <Width>{{ icon_item.width }}</Width>
+      <Depth>{{ icon_item.depth }}</Depth>
+      <Data>{{ icon_item.data }}</Data>
+    </IconItem>
+  {% endfor %}
+</CiscoIPPhoneIconMenu>
