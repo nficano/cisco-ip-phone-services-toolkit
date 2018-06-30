@@ -1,43 +1,41 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-from setuptools import setup, find_packages
-from os import path
-from ast import parse
-
+"""setup instructions for Cisco IP Phone Service Factory."""
 try:
-    # Python2
-    from future_builtins import filter
+    from setuptools import setup
 except ImportError:
-    # Python3
-    pass
+    from distutils.core import setup
 
-with open('README.rst') as file:
-    readme = file.read()
+with open('README.md') as readme_file:
+    readme = readme_file.read()
 
-with open('LICENSE.txt') as file:
-    license = file.read()
-
-with open(path.join('ciscoipphone', '__init__.py')) as file:
-    __version__ = parse(next(filter(
-        lambda line: line.startswith('__version__'), file))).body[0].value.s
+with open('LICENSE') as readme_file:
+    license = readme_file.read()
 
 setup(
-    name='ciscoipphone',
+    name='phone_services',
+    version='2.0.0',
     author='Nick Ficano',
     author_email='nficano@gmail.com',
-    version=__version__,
-    packages=find_packages(exclude=['tests*']),
-    url='http://nickficano.com',
-    description=("a collection of tools and constructor for quickly "
-                 "generating and deploying Cisco IP phone directory "
-                 "services."),
-    zip_safe=False,
-    long_description=readme,
-    install_requires=['six'],
+    packages=['phone_services'],
+    url='https://github.com/nficano/phone-services',
     license=license,
+    entry_points={},
     classifiers=[
-        "Programming Language :: Python :: 2.7",
-        "Topic :: Internet",
-    ]
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Console',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: MacOS',
+        'Operating System :: Microsoft',
+        'Operating System :: POSIX',
+        'Operating System :: Unix',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ],
+    description=('Cisco IP Phone Service Factory'),
+    long_description=readme,
+    zip_safe=True,
 )

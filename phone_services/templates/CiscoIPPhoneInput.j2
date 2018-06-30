@@ -1,0 +1,13 @@
+<CiscoIPPhoneInput>
+   <Title>{{ title }}</Title>
+   <Prompt>{{ prompt }}</Prompt>
+   <URL>{{ url }}</URL>
+   {% for input_item in input_items %}
+     <InputItem>
+      <DisplayName>{{ input_item.display_name }}</DisplayName>
+      <QueryStringParam>{{ input_item.query_string_param }}</QueryStringParam>
+      <DefaultValue>{{ input_item.default_value }}</DefaultValue>
+      <InputFlags>{{ input_item.input_flags }}</InputFlags>
+     </InputItem>
+   {% endfor %}
+ </CiscoIPPhoneInput>

@@ -1,0 +1,20 @@
+<CiscoIPPhoneImage {%- if window_mode -%}WindowMode="{{ window_mode }}"{%- endif -%}>
+  <Title>{{ title }}</Title>
+  <Prompt>{{ prompt }}</Prompt>
+  <LocationX>{{ location_x }}</LocationX>
+  <LocationY>{{ location_y }}</LocationY>
+  <Width>{{ width }}</Width>
+  <Height>{{ height }}</Height>
+  <Depth>{{ depth }}</Depth>
+  <Data>{{ data }}</Data>
+  {% for soft_key_item in soft_key_items %}
+    <SoftKeyItem>
+      <Name>{{ soft_key_item.name }}</Name>
+      <URL>{{ soft_key_item.url }}</URL>
+      <Position>{{ soft_key_item.position }}</Position>
+      {%- if soft_key_item.get('url_down') -%}
+      <URLDown>{{ url_down }}</URLDown>
+      {%- endif -%}
+    </SoftKeyItem>
+  {% endfor %}
+</CiscoIPPhoneImage>

@@ -1,0 +1,19 @@
+<CiscoIPPhoneGraphicFileMenu{%- if window_mode -%} WindowMode="{{ window_mode }}"{%- endif -%}>
+  <Title>{{ title }}</Title>
+  <Prompt>{{ prompt }}</Prompt>
+  <LocationX>{{ location_x }}</LocationX>
+  <LocationY>{{ location_y }}</LocationY>
+  <URL>{{ url }}</URL>
+  {% for menu_item in menu_items %}
+    <MenuItem>
+      <Name>{{ menu_item.name }}</Name>
+      <URL>{{ menu_item.url }}</URL>
+    </MenuItem>
+    <TouchArea
+      X1="{{ menu_item.get('touch_area_x1') or 'left edge' }}"
+      Y1="{{ menu_item.get('touch_area_y1') or 'top edge' }}"
+      X2="{{ menu_item.get('touch_area_x2') or 'right edge' }}"
+      Y2="{{ menu_item.get('touch_area_y2') or 'bottom edge' }}"
+    />
+  {% endfor %}
+</CiscoIPPhoneGraphicFileMenu>

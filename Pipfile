@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+"jinja2" = "*"
+ipython = "*"
+
+[dev-packages]
+pre-commit = "*"
+bumpversion = "*"
+
+[requires]
+python_version = "3.6"

@@ -1,0 +1,10 @@
+<CiscoIPPhoneMenu>
+  <Title>{{ title }}</Title>
+  <Prompt>{{ prompt }}</Prompt>
+  {% for menu_item in menu_items %}
+    <MenuItem>
+      <Name>{{ menu_item.name }}</Name>
+      <URL>{{ menu_item.url }}</URL>
+    </MenuItem>
+  {% endfor %}
+</CiscoIPPhoneMenu>
