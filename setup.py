@@ -10,6 +10,10 @@ with open('README.md') as readme_file:
 with open('LICENSE') as readme_file:
     license = readme_file.read()
 
+requires=[
+    'Jinja2==2.10',
+]
+
 setup(
     name='phone_services',
     version='2.0.0',
@@ -37,5 +41,6 @@ setup(
     ],
     description=('Cisco IP Phone Service Factory'),
     long_description=readme,
+    install_requires=requires,
     zip_safe=True,
 )
