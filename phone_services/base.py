@@ -1,10 +1,10 @@
-import os
 import json
-from pprint import pformat
-
+import os
 from xml.dom.minidom import parseString as parse_xml_string
+
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
+
 
 class CiscoIPPhoneService:
     def get_jinja2_env(self):

@@ -8,6 +8,8 @@ name = "pypi"
 ipython = "*"
 
 [dev-packages]
+pre-commit = "*"
+bumpversion = "*"
 
 [requires]
 python_version = "3.6"

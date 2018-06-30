@@ -1,0 +1,48 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    sha: v1.3.0
+    hooks:
+    -   id: check-ast
+        language_version: python3.6
+    -   id: autopep8-wrapper
+        args:
+        - --in-place
+        - --aggressive
+        - --aggressive
+        - --experimental
+        language_version: python3.6
+    -   id: check-case-conflict
+        language_version: python3.6
+    -   id: check-merge-conflict
+        language_version: python3.6
+    -   id: detect-private-key
+        language_version: python3.6
+    -   id: double-quote-string-fixer
+        language_version: python3.6
+    -   id: end-of-file-fixer
+        language_version: python3.6
+    -   id: flake8
+        language_version: python3.6
+    -   id: trailing-whitespace
+        language_version: python3.6
+    -   id: check-json
+    -   id: pretty-format-json
+        args:
+        - --autofix
+        language_version: python3.6
+
+-   repo: https://github.com/asottile/reorder_python_imports
+    sha: v1.0.1
+    hooks:
+    -   id: reorder-python-imports
+        language_version: python3.6
+-   repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    sha: v1.1.0
+    hooks:
+    -   id: python-safety-dependencies-check
+        language_version: python3.6
+-   repo: https://github.com/asottile/add-trailing-comma
+    sha: v0.6.4
+    hooks:
+    -   id: add-trailing-comma
+        args: ['--py36-plus']
