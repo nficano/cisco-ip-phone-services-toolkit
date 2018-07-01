@@ -16,7 +16,7 @@ requires = [
 
 setup(
     name='phone_services',
-    version='2.0.1',
+    version='2.0.3.dev0',
     author='Nick Ficano',
     author_email='nficano@gmail.com',
     packages=['phone_services'],
