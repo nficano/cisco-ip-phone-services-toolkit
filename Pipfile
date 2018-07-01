@@ -5,11 +5,11 @@ name = "pypi"
 
 [packages]
 "jinja2" = "*"
-ipython = "*"
 
 [dev-packages]
 pre-commit = "*"
 bumpversion = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.6"

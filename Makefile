@@ -3,7 +3,7 @@ help:
 	@echo "clean-build - remove build artifacts"
 	@echo "clean-pyc - remove Python file artifacts"
 	@echo "install - install the package to the active Python's site-packages"
-	@echo "release - release updated version to pypi"	
+	@echo "release - release updated version to pypi"
 
 clean: clean-build clean-pyc
 
@@ -25,9 +25,10 @@ install: clean
 	python setup.py install
 
 release:
-	clean
+	make clean
 	pre-commit run --all-files
-	bumpversion patch release
+	pre-commit run --all-files
+	pipenv run bumpversion patch release
 	python setup.py sdist bdist_wheel upload
-	bumpversion --no-tag patch
+	pipenv run bumpversion --no-tag patch
 	git push --tags
