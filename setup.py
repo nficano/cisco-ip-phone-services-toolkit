@@ -15,11 +15,11 @@ requires = [
 ]
 
 setup(
-    name='phone_services',
+    name='cisco_ip_phone_services',
     version='2.0.5.dev0',
     author='Nick Ficano',
     author_email='nficano@gmail.com',
-    packages=['phone_services'],
+    packages=['cisco_ip_phone_services'],
     url='https://github.com/nficano/phone-services',
     license=license,
     entry_points={},
