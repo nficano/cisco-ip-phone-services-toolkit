@@ -49,7 +49,10 @@ class CiscoIPPhoneService:
     def _render_template(self):
         jinja2_env = self._get_jinja2_env()
         template = f'{self.__class__.__name__}.j2'
-        variables = {k: self._xml_escape(v) for k, v in self.__dict__.items()}
+        variables = {
+            k: self._xml_escape(v) for k, v in self.__dict__.items()
+            if isinstance(v, str)
+        }
 
         return jinja2_env.get_template(template).render(variables)
 
