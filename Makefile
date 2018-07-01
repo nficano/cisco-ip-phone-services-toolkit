@@ -26,8 +26,6 @@ install: clean
 
 release:
 	make clean
-	pre-commit run --all-files
-	pre-commit run --all-files
 	pipenv run bumpversion patch release
 	python setup.py sdist bdist_wheel upload
 	pipenv run bumpversion --no-tag patch
