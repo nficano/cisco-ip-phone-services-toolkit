@@ -31,3 +31,4 @@ release:
 	python setup.py sdist bdist_wheel upload
 	pipenv run bumpversion --no-tag patch
 	git push --tags
+	make clean
