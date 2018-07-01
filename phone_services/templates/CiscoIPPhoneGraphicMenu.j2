@@ -1,4 +1,4 @@
-<CiscoIPPhoneGraphicMenu{%- if window_mode -%} WindowMode="{{ window_mode }}"{%- endif -%}>
+<CiscoIPPhoneGraphicMenu{%- if window_mode -%} WindowMode="{{ window_mode }}" {%- endif -%}>
   <Title>{{ title }}</Title>
   <Prompt>{{ prompt }}</Prompt>
   <LocationX>{{ location_x }}</LocationX>
@@ -8,9 +8,9 @@
   <Depth>{{ depth }}</Depth>
   <Data>{{ data }}</Data>
   {% for menu_item in menu_items %}
-    <MenuItem>
-      <Name>{{ menu_item.name }}</Name>
-      <URL>{{ menu_item.url }}</URL>
-    </MenuItem>
+  <MenuItem>
+    <Name>{{ menu_item.name }}</Name>
+    <URL>{{ menu_item.url }}</URL>
+  </MenuItem>
   {% endfor %}
 </CiscoIPPhoneGraphicMenu>

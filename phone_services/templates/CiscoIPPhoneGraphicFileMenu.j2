@@ -5,15 +5,14 @@
   <LocationY>{{ location_y }}</LocationY>
   <URL>{{ url }}</URL>
   {% for menu_item in menu_items %}
+    {% set X1 = menu_item.get('touch_area_x1') or 'left edge' %}
+    {% set Y1 = menu_item.get('touch_area_y1') or 'top edge' %}
+    {% set X2 = menu_item.get('touch_area_x2') or 'right edge' %}
+    {% set Y2 = menu_item.get('touch_area_y2') or 'bottom edge' %}
     <MenuItem>
       <Name>{{ menu_item.name }}</Name>
       <URL>{{ menu_item.url }}</URL>
     </MenuItem>
-    <TouchArea
-      X1="{{ menu_item.get('touch_area_x1') or 'left edge' }}"
-      Y1="{{ menu_item.get('touch_area_y1') or 'top edge' }}"
-      X2="{{ menu_item.get('touch_area_x2') or 'right edge' }}"
-      Y2="{{ menu_item.get('touch_area_y2') or 'bottom edge' }}"
-    />
+    <TouchArea X1="{{ X1 }}" Y1="{{ Y1 }}" X2="{{ X2 }}" Y2="{{ Y2 }}" />
   {% endfor %}
 </CiscoIPPhoneGraphicFileMenu>

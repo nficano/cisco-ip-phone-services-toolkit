@@ -1,17 +1,16 @@
 <CiscoIPPhoneIconFileMenu>
-  <Title>{{ title }}</Title>
-  <Prompt>{{ prompt }}</Prompt>
-  {% for menu_item in menu_items %}
-  <MenuItem>
-    <IconIndex>{{ menu_item.icon_index }}</IconIndex>
-    <Name>{{ menu_item.name }}</Name>
-    <URL>{{ menu_item.url }}</URL>
-  </MenuItem>
-  {% endfor %}
-  {% for icon_item in icon_items %}
+    <Title>{{ title }}</Title>
+    <Prompt>{{ prompt }}</Prompt>
+    {% for menu_item in menu_items %}
+    <MenuItem>
+        <IconIndex>{{ menu_item.icon_index }}</IconIndex>
+        <Name>{{ menu_item.name }}</Name>
+        <URL>{{ menu_item.url }}</URL>
+    </MenuItem>
+    {% endfor %} {% for icon_item in icon_items %}
     <IconItem>
-      <Index>{{ icon_item.index }}</Index>
-      <URL>{{ icon_item.url }}</URL>
+        <Index>{{ icon_item.index }}</Index>
+        <URL>{{ icon_item.url }}</URL>
     </IconItem>
-  {% endfor %}
+    {% endfor %}
 </CiscoIPPhoneIconFileMenu>
