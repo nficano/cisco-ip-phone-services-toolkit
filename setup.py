@@ -23,6 +23,9 @@ setup(
     url='https://github.com/nficano/phone-services',
     license=license,
     entry_points={},
+    package_data={
+        'cisco_ip_phone_services': ['templates/*'],
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
