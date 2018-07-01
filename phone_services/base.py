@@ -53,7 +53,6 @@ class CiscoIPPhoneService:
 
         return jinja2_env.get_template(template).render(variables)
 
-
     def __repr__(self):
         obj = json.dumps(self.__dict__, sort_keys=True, indent=2)
         return f'<{self.__class__.__name__} {obj}>'
