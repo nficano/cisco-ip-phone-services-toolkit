@@ -16,7 +16,7 @@ requires = [
 
 setup(
     name='cisco_ip_phone_services',
-    version='2.0.15.dev0',
+    version='2.0.16.dev0',
     author='Nick Ficano',
     author_email='nficano@gmail.com',
     packages=['cisco_ip_phone_services'],
