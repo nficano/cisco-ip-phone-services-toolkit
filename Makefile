@@ -26,7 +26,7 @@ install: clean
 
 release:
 	make clean
-	pipenv run bumpversion $(argument)
+	pipenv run bumpversion ${part}
 	pipenv run bumpversion release
 	python setup.py sdist bdist_wheel upload
 	pipenv run bumpversion --no-tag patch
