@@ -25,9 +25,10 @@ install: clean
 	python setup.py install
 
 release:
-	make clean
-	pipenv run bumpversion ${part}
-	pipenv run bumpversion release
-	python setup.py sdist bdist_wheel upload
-	pipenv run bumpversion --no-tag patch
-	git push --tags
+	@make clean
+	@pipenv run bumpversion ${part}
+	@pipenv run bumpversion release
+	@python setup.py sdist bdist_wheel upload
+	@pipenv run bumpversion --no-tag patch
+	@git push --tags
+	echo '$part release successfully submitted to Pypi'
