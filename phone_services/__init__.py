@@ -4,7 +4,7 @@
 Phone Services: A Factory for building Cisco IP Phone Services.
 """
 __title__ = 'phone_services'
-__version__ = '2.0.2'
+__version__ = '2.0.3.dev0'
 __author__ = 'Nick Ficano'
 __license__ = 'MIT License'
 __copyright__ = 'Copyright 2018 Nick Ficano'
