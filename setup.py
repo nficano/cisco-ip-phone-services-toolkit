@@ -10,7 +10,7 @@ with open('README.md') as readme_file:
 with open('LICENSE') as readme_file:
     license = readme_file.read()
 
-requires=[
+requires = [
     'Jinja2==2.10',
 ]
 
