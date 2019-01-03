@@ -7,7 +7,7 @@ __title__ = 'cisco_ip_phone_services'
 __version__ = '2.0.19.dev0'
 __author__ = 'Nick Ficano'
 __license__ = 'MIT License'
-__copyright__ = 'Copyright 2018 Nick Ficano'
+__copyright__ = 'Copyright 2019 Nick Ficano'
 
 from .__main__ import CiscoIPPhoneMenu
 from .__main__ import CiscoIPPhoneText
