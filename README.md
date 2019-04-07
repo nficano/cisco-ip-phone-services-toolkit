@@ -1,6 +1,6 @@
 <p align="center">
   <img
-    src="https://s3.amazonaws.com/nf-assets/ciscoipphoneservices.svg"
+    src="https://assets.nickficano.com/gh-cisco-ip-phone-services.svg"
     alt="cips"
     width="777"
     height="112" />
