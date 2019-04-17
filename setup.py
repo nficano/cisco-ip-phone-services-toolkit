@@ -11,7 +11,7 @@ with open('LICENSE') as readme_file:
     license = readme_file.read()
 
 requires = [
-    'Jinja2==2.10',
+    'Jinja2>=2.10.1',
 ]
 
 setup(
