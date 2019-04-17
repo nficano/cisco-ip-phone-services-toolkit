@@ -1,13 +1,5 @@
-<p align="center">
-  <img
-    src="https://assets.nickficano.com/gh-cisco-ip-phone-services.svg"
-    alt="cips"
-    width="777"
-    height="112" />
-</p>
-
 ## About
-TODO
+Cisco IP Phone Services Toolkit is a Python toolkit for creating simple interactive services, (such as paginated, searchable contact lists) for 79xx model Cisco IP phones.
 
 ## Getting Started
 TODO
